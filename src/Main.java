@@ -6,14 +6,13 @@ import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) {
-        int dayNumber = 2;
-
-//        Day1 day1 = new Day1();
-//        System.out.println(day1.getSolutions(readFile(1))[0]);
-//        System.out.println(day1.getSolutions(readFile(1))[1]);
+        Day1 day1 = new Day1();
+        System.out.println(day1.getSolutions(readFile(1))[0]);
+        System.out.println(day1.getSolutions(readFile(1))[1]);
 
         Day2 day2 = new Day2();
-        System.out.println(day2.getSolutions(readFile(dayNumber))[0]);
+        System.out.println(day2.getSolutions(readFile(2))[0]);
+        System.out.println(day2.getSolutions(readFile(2))[1]);
     }
 
     public static String readFile(int dayNumber){
