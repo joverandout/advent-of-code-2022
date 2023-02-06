@@ -6,7 +6,8 @@ import java.nio.file.Path;
 public class Main {
     public static void main(String[] args) {
         Day1 day1 = new Day1();
-        System.out.println(day1.part1(readFile(1)));
+        System.out.println(day1.getSolutions(readFile(1))[0]);
+        System.out.println(day1.getSolutions(readFile(1))[1]);
     }
 
     public static String readFile(int dayNumber){
