@@ -13,6 +13,10 @@ public class Main {
         Day2 day2 = new Day2();
         System.out.println(day2.getSolutions(readFile(2))[0]);
         System.out.println(day2.getSolutions(readFile(2))[1]);
+
+        Day3 day3 = new Day3();
+        System.out.println(day3.getSolutions(readFile(3))[0]);
+        System.out.println(day3.getSolutions(readFile(3))[1]);
     }
 
     public static String readFile(int dayNumber){
