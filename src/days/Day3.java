@@ -33,39 +33,17 @@ public class Day3 {
         return solutions;
     }
 
-    public static int getPriorityOfALine(String line) throws Exception {
+    private static int getPriorityOfALine(String line) throws Exception {
         String s1a = line.substring(0, (line.length()/2));
         String s1b = line.substring((line.length()/2));
-        char common = commonChars(s1a, s1b);
-        if(Character.isLowerCase(common)){
-            int asciiVal = common;
-            asciiVal -= 96;
-            return asciiVal;
-        }
-        else if(Character.isUpperCase(common)){
-            int asciiVal = common;
-            asciiVal -= 38;
-            return asciiVal;
-        }
-        throw new Exception("Character returned was netiher lower nor upper case");
+        return convertCharToPriority(commonChars(s1a, s1b));
     }
 
-    public static int getPriorityOfTheBadges(String line1, String line2, String line3) throws Exception {
-        char common = commonCharsPart2(line1, line2, line3);
-        if(Character.isLowerCase(common)){
-            int asciiVal = common;
-            asciiVal -= 96;
-            return asciiVal;
-        }
-        else if(Character.isUpperCase(common)){
-            int asciiVal = common;
-            asciiVal -= 38;
-            return asciiVal;
-        }
-        throw new Exception("Character returned was netiher lower nor upper case");
+    private static int getPriorityOfTheBadges(String line1, String line2, String line3) throws Exception {
+        return convertCharToPriority(commonCharsPart2(line1, line2, line3));
     }
 
-    public static char commonChars(String s1, String s2) throws Exception {
+    private static char commonChars(String s1, String s2) throws Exception {
         for(Character c : s1.toCharArray()) {
             if(s2.indexOf(c) >= 0) {
                 return c;
@@ -74,13 +52,27 @@ public class Day3 {
         throw new Exception("No common chars");
     }
 
-    public static char commonCharsPart2(String s1, String s2, String s3) throws Exception {
+    private static char commonCharsPart2(String s1, String s2, String s3) throws Exception {
         for(Character c : s1.toCharArray()) {
             if(s2.indexOf(c) >= 0 && s3.indexOf(c) >= 0) {
                 return c;
             }
         }
         throw new Exception("No common chars");
+    }
+
+    private static int convertCharToPriority(char common) throws Exception {
+        if(Character.isLowerCase(common)){
+            int asciiVal = common;
+            asciiVal -= 96;
+            return asciiVal;
+        }
+        else if(Character.isUpperCase(common)){
+            int asciiVal = common;
+            asciiVal -= 38;
+            return asciiVal;
+        }
+        throw new Exception("Character returned was netiher lower nor upper case");
     }
 
 }
