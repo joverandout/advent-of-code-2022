@@ -17,6 +17,9 @@ public class Main {
         Day3 day3 = new Day3();
         System.out.println(day3.getSolutions(readFile(3))[0]);
         System.out.println(day3.getSolutions(readFile(3))[1]);
+
+        Day4 day4 = new Day4();
+        System.out.println(day4.getSolutions(readFile(4))[0]);
     }
 
     public static String readFile(int dayNumber){
