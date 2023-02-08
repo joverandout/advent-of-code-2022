@@ -20,6 +20,7 @@ public class Main {
 
         Day4 day4 = new Day4();
         System.out.println(day4.getSolutions(readFile(4))[0]);
+        System.out.println(day4.getSolutions(readFile(4))[1]);
     }
 
     public static String readFile(int dayNumber){
