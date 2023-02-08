@@ -10,16 +10,7 @@ public class Day4 {
             Scanner scanner = new Scanner(fileAsText);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] ranges = line.split(",");
-                int[] array1 = getRangeSplit(ranges[0]);
-                int[] array2 = getRangeSplit(ranges[1]);
-
-                if(array1[0] <= array2[0] && array1[1] >= array2[1]){
-                    count++;
-                }
-                else if(array2[0] <= array1[0] && array2[1] >= array1[1]){
-                    count ++;
-                }
+                if(part1Rule(line)) count++;
             }
             return new int[]{count};
         } catch (Exception e){
@@ -28,7 +19,21 @@ public class Day4 {
         return new int[]{0};
     }
 
-    private static int[] getRangeSplit (String range) throws Exception{
+    private static boolean part1Rule(String line){
+        String[] ranges = line.split(",");
+        int[] array1 = getRangeSplit(ranges[0]);
+        int[] array2 = getRangeSplit(ranges[1]);
+
+        if(array1[0] <= array2[0] && array1[1] >= array2[1]){
+            return true;
+        }
+        if(array2[0] <= array1[0] && array2[1] >= array1[1]){
+            return true;
+        }
+        return false;
+    }
+
+    private static int[] getRangeSplit (String range){
         String[] parts = range.split("-");
         return new int[] {Integer.parseInt(parts[0]), Integer.parseInt(parts[1])};
     }
