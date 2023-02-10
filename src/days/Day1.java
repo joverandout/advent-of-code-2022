@@ -2,9 +2,14 @@ package days;
 
 import java.util.*;
 
+public class Day1 extends Day{
 
-public class Day1 {
-    public static int[] getSolutions(String fileAsText){
+    public Day1() {
+        super(1);
+    }
+
+    @Override
+    public Object[] getSolutions(String fileAsText){
         List<Integer> calories = new ArrayList<Integer>();
 
         try{
@@ -24,7 +29,7 @@ public class Day1 {
             e.printStackTrace();
         }
 
-        int[] solutions = new int[2];
+        Object[] solutions = new Object[2];
         solutions[0] = part1(calories);
         solutions[1] = part2(calories);
         return solutions;

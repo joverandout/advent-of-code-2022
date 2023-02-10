@@ -1,12 +1,14 @@
 package days;
 
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
-public class Day3 {
+public class Day3 extends Day{
+    public Day3() {
+        super(3);
+    }
 
-    public static int[] getSolutions(String fileAsText) {
+    @Override
+    public Object[] getSolutions(String fileAsText) {
         int total1 = 0, total2 = 0;
         int count = 1;
         String string1 = "", string2 ="", string3 = "";
@@ -27,7 +29,7 @@ public class Day3 {
             e.printStackTrace();
         }
 
-        int[] solutions = new int[2];
+        Object[] solutions = new Object[2];
         solutions[0] = total1;
         solutions[1] = total2;
         return solutions;

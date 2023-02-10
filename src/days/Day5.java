@@ -1,7 +1,6 @@
 package days;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -12,14 +11,18 @@ import java.util.Stack;
  * Let's hope day 6 is better
  */
 
-public class Day5 {
-    public static String[] getSolutions(String fileAsText) {
+public class Day5 extends Day{
+    public Day5() {
+        super(5);
+    }
+
+    @Override
+    public Object[] getSolutions(String fileAsText) {
         ArrayList<Stack<Character>> environment = organiseInput(fileAsText);
         String result = "";
         for(Stack<Character> stack : environment) {
             result += stack.pop().toString();
         }
-        System.out.println(result);
         return new String[]{result};
     }
 

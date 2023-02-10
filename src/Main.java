@@ -1,29 +1,16 @@
-import days.Day1;
-import days.*;
+import days.Day;
 
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Main {
-    public static void main(String[] args) {
-        Day1 day1 = new Day1();
-        System.out.println(day1.getSolutions(readFile(1))[0]);
-        System.out.println(day1.getSolutions(readFile(1))[1]);
-
-        Day2 day2 = new Day2();
-        System.out.println(day2.getSolutions(readFile(2))[0]);
-        System.out.println(day2.getSolutions(readFile(2))[1]);
-
-        Day3 day3 = new Day3();
-        System.out.println(day3.getSolutions(readFile(3))[0]);
-        System.out.println(day3.getSolutions(readFile(3))[1]);
-
-        Day4 day4 = new Day4();
-        System.out.println(day4.getSolutions(readFile(4))[0]);
-        System.out.println(day4.getSolutions(readFile(4))[1]);
-
-        Day5 day5 = new Day5();
-        System.out.println(day5.getSolutions(readFile(5))[0]);
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        for (int day = 1; day <= 5; day++) {
+            System.out.println("Day " + day + ":");
+            Day instance = (Day) Class.forName("days.Day" + day).getDeclaredConstructor().newInstance();
+            instance.PrintParts(readFile(day));
+        }
     }
 
     public static String readFile(int dayNumber){

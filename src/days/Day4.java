@@ -2,9 +2,13 @@ package days;
 
 import java.util.Scanner;
 
-public class Day4 {
+public class Day4 extends Day{
+    public Day4() {
+        super(4);
+    }
 
-    public static int[] getSolutions(String fileAsText) {
+    @Override
+    public Object[] getSolutions(String fileAsText) {
         int[] count = {0,0};
         try{
             Scanner scanner = new Scanner(fileAsText);
@@ -13,11 +17,10 @@ public class Day4 {
                 if(part1Rule(line)) count[0]++;
                 if(part2Rule(line)) count[1]++;
             }
-            return count;
         } catch (Exception e){
             e.printStackTrace();
         }
-        return new int[]{0};
+        return new Object[]{count[0], count[1]};
     }
 
     private static boolean part1Rule(String line){

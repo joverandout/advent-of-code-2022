@@ -1,11 +1,15 @@
 package days;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class Day2 {
-    public static int[] getSolutions(String fileAsText) {
+public class Day2 extends Day{
+
+    public Day2() {
+        super(2);
+    }
+
+    @Override
+    public Object[] getSolutions(String fileAsText) {
         int total1 = 0, total2 = 0;
         try{
             Scanner scanner = new Scanner(fileAsText);
@@ -18,7 +22,7 @@ public class Day2 {
             e.printStackTrace();
         }
 
-        int[] solutions = new int[2];
+        Object[] solutions = new Object[2];
         solutions[0] = total1;
         solutions[1] = total2;
         return solutions;
