@@ -1,6 +1,6 @@
 package days;
 
-import Common.Day;
+import common.Day;
 
 import java.util.Scanner;
 

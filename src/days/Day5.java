@@ -1,35 +1,34 @@
 package days;
 
-import Common.Day;
+import common.Day;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
-
-/**
- * I CAN CODE BETTER THAN THIS - THIS IS REALLY POOR.
- * Actually feel shameful that this is my solution.
- * Had to reverse the stacks because I cocked up.
- * Let's hope day 6 is better.
- **/
 
 public class Day5 extends Day {
     public Day5() {}
 
     @Override
     public Object[] getSolutions(String fileAsText) {
-        ArrayList<Stack<Character>> environment = organiseInput(fileAsText);
-        String result = "";
-        for(Stack<Character> stack : environment) {
-            result += stack.pop().toString();
+        ArrayList<Stack<Character>>[] environment = organiseInput(fileAsText);
+        String partOne = "", partTwo = "";
+        for(Stack<Character> stack : environment[0]) {
+            partOne += stack.pop().toString();
         }
-        return new String[]{result};
+        for(Stack<Character> stack : environment[1]) {
+            partTwo += stack.pop().toString();
+        }
+        return new String[]{partOne, partTwo};
     }
 
-    public static ArrayList<Stack<Character>> organiseInput(String fileAsText) {
-        ArrayList<Stack<Character>> environment = new ArrayList<>();
+    public static ArrayList<Stack<Character>>[] organiseInput(String fileAsText) {
+        ArrayList<Stack<Character>> environmentPart1 = new ArrayList<>();
+        ArrayList<Stack<Character>> environmentPart2 = new ArrayList<>();
+
         for (int i = 0; i < 9; i++) {
-            environment.add(new Stack<>());
+            environmentPart1.add(new Stack<>());
+            environmentPart2.add(new Stack<>());
         }
 
         boolean makeEnvironment = true;
@@ -39,13 +38,13 @@ public class Day5 extends Day {
                 String line = scanner.nextLine();
                 if(line.equals("") || line.toCharArray()[1] == '1') break;
                 else if(makeEnvironment){
-                    environment = tokeniseOneLine(line.toCharArray(), environment);
+                    environmentPart1 = tokeniseOneLine(line.toCharArray(), environmentPart1);
+                    environmentPart2 = tokeniseOneLine(line.toCharArray(), environmentPart2);
                 }
             }
 
-            // I had to fucking reverse the stacks because I had done it wrong - really poor from me.
-            // A botch of a botch
-            environment = reverseStacks(environment);
+            environmentPart1 = reverseStacks(environmentPart1);
+            environmentPart2 = reverseStacks(environmentPart2);
 
             while (scanner.hasNext()){
                 scanner.next();
@@ -55,14 +54,15 @@ public class Day5 extends Day {
                 scanner.next();
                 int moveTo = scanner.nextInt()-1;
 
-                environment = performMove(numToMove, moveFrom, moveTo, environment);
+                environmentPart1 = performMovePart1(numToMove, moveFrom, moveTo, environmentPart1);
+                environmentPart2 = performMovePart2(numToMove, moveFrom, moveTo, environmentPart2);
             }
-            return environment;
+            return new ArrayList[]{environmentPart1, environmentPart2};
 
         } catch (Exception e){
             e.printStackTrace();
         }
-        return environment;
+        return new ArrayList[]{environmentPart1, environmentPart2};
     }
 
     private static ArrayList<Stack<Character>> reverseStacks(ArrayList<Stack<Character>> currentEnv) {
@@ -91,8 +91,8 @@ public class Day5 extends Day {
         return currentEnv;
     }
 
-    private static ArrayList<Stack<Character>> performMove(int number, int source, int destination, ArrayList<Stack<Character>> currentEnv){
-        // Absolute garbage way of doing it
+    private static ArrayList<Stack<Character>> performMovePart1(int number, int source, int destination,
+                                                                            ArrayList<Stack<Character>> currentEnv){
         for (int i = 0; i < number; i++) {
             char ctm = currentEnv.get(source).pop();
             currentEnv.get(destination).push(ctm);
@@ -100,5 +100,18 @@ public class Day5 extends Day {
         return currentEnv;
     }
 
+    private static ArrayList<Stack<Character>> performMovePart2(int number, int source, int destination,
+                                                                            ArrayList<Stack<Character>> currentEnv){
+        Stack<Character> tempStack = new Stack<>();
+        for (int i = 0; i < number; i++) {
+            char ctm = currentEnv.get(source).pop();
+            tempStack.push(ctm);
+        }
+        for (int i = 0; i < number; i++) {
+            char ctm = tempStack.pop();
+            currentEnv.get(destination).push(ctm);
+        }
+        return currentEnv;
+    }
 
 }

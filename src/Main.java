@@ -1,4 +1,4 @@
-import Common.Day;
+import common.Day;
 
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
