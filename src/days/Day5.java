@@ -5,6 +5,13 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.Stack;
 
+/*
+ * I CAN CODE BETTER THAN THIS - THIS IS REALLY POOR
+ * Actually feel shameful that this is my solution
+ * Had to reverse the stacks because I cocked up
+ * Let's hope day 6 is better
+ */
+
 public class Day5 {
     public static String[] getSolutions(String fileAsText) {
         ArrayList<Stack<Character>> environment = organiseInput(fileAsText);
@@ -33,6 +40,8 @@ public class Day5 {
                 }
             }
 
+            // I had to fucking reverse the stacks because I had done it wrong - really poor from me.
+            // A botch of a botch
             environment = reverseStacks(environment);
 
             while (scanner.hasNext()){
@@ -79,9 +88,8 @@ public class Day5 {
         return currentEnv;
     }
 
-    // 2 6 10
-
     private static ArrayList<Stack<Character>> performMove(int number, int source, int destination, ArrayList<Stack<Character>> currentEnv){
+        // Absolute garbage way of doing it
         for (int i = 0; i < number; i++) {
             char ctm = currentEnv.get(source).pop();
             currentEnv.get(destination).push(ctm);
