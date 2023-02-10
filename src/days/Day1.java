@@ -1,7 +1,6 @@
 package days;
 
 import Common.Day;
-git
 import java.util.*;
 
 public class Day1 extends Day {

@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1c26136-821b-4e35-a066-aa64011fd81e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/days/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common/Day.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/days/Day1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/days/Day1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/days/Day2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/days/Day2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/days/Day3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/days/Day3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/days/Day4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/days/Day4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/days/Day5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/days/Day5.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
