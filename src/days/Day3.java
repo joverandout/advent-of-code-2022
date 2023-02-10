@@ -1,8 +1,10 @@
 package days;
 
+import Common.Day;
+
 import java.util.Scanner;
 
-public class Day3 extends Day{
+public class Day3 extends Day {
     public Day3() {}
 
     @Override

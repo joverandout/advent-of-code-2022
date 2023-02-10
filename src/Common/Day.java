@@ -1,4 +1,4 @@
-package days;
+package Common;
 
 public abstract class Day {
     protected Day() {}

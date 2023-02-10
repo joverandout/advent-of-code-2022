@@ -1,5 +1,7 @@
 package days;
 
+import Common.Day;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
@@ -11,7 +13,7 @@ import java.util.Stack;
  * Let's hope day 6 is better
  */
 
-public class Day5 extends Day{
+public class Day5 extends Day {
     public Day5() {}
 
     @Override
