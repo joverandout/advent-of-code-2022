@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
-/*
- * I CAN CODE BETTER THAN THIS - THIS IS REALLY POOR
- * Actually feel shameful that this is my solution
- * Had to reverse the stacks because I cocked up
- * Let's hope day 6 is better
- */
+/**
+ * I CAN CODE BETTER THAN THIS - THIS IS REALLY POOR.
+ * Actually feel shameful that this is my solution.
+ * Had to reverse the stacks because I cocked up.
+ * Let's hope day 6 is better.
+ **/
 
 public class Day5 extends Day {
     public Day5() {}
