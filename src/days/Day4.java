@@ -3,9 +3,7 @@ package days;
 import java.util.Scanner;
 
 public class Day4 extends Day{
-    public Day4() {
-        super(4);
-    }
+    public Day4() {}
 
     @Override
     public Object[] getSolutions(String fileAsText) {

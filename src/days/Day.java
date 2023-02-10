@@ -1,11 +1,7 @@
 package days;
 
 public abstract class Day {
-    protected final int day;
-
-    protected Day(int day) {
-        this.day = day;
-    }
+    protected Day() {}
 
     public abstract Object[] getSolutions(String fileAsText);
 

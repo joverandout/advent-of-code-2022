@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class Day2 extends Day{
 
-    public Day2() {
-        super(2);
-    }
+    public Day2() {}
 
     @Override
     public Object[] getSolutions(String fileAsText) {

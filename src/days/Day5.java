@@ -12,9 +12,7 @@ import java.util.Stack;
  */
 
 public class Day5 extends Day{
-    public Day5() {
-        super(5);
-    }
+    public Day5() {}
 
     @Override
     public Object[] getSolutions(String fileAsText) {

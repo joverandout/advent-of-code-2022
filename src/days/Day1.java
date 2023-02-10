@@ -4,9 +4,7 @@ import java.util.*;
 
 public class Day1 extends Day{
 
-    public Day1() {
-        super(1);
-    }
+    public Day1() {}
 
     @Override
     public Object[] getSolutions(String fileAsText){
