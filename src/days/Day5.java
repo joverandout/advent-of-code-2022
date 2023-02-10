@@ -32,32 +32,18 @@ public class Day5 {
                     environment = tokeniseOneLine(line.toCharArray(), environment);
                 }
             }
-            for(Stack<Character> stack : environment){
-                System.out.println(stack.toString());
-            }
-            System.out.println("-------");
+
             environment = reverseStacks(environment);
-            for(Stack<Character> stack : environment){
-                System.out.println(stack.toString());
-            }
+
             while (scanner.hasNext()){
-                scanner.next();                      // read next and throw away
-                int numToMove = scanner.nextInt();   // read nextInt -> number to move
-                //System.out.println(numToMove);
-                scanner.next();                      // read next and throw away
-                int moveFrom = scanner.nextInt()-1;    // read nextInt -> move from
-                //System.out.println(moveFrom);
                 scanner.next();
-                int moveTo = scanner.nextInt()-1;      // read nextInt -> move to
-                //System.out.println(moveTo)
+                int numToMove = scanner.nextInt();
+                scanner.next();
+                int moveFrom = scanner.nextInt()-1;
+                scanner.next();
+                int moveTo = scanner.nextInt()-1;
 
                 environment = performMove(numToMove, moveFrom, moveTo, environment);
-                System.out.println("++++++++++++++++++++++++++++++++++");
-                System.out.println("move " + numToMove + " from " + moveFrom + " to " + moveTo);
-                System.out.println();
-                for(Stack<Character> stack : environment){
-                    System.out.println(stack.toString());
-                }
             }
             return environment;
 
@@ -79,11 +65,8 @@ public class Day5 {
         Stack<Character> newStack = new Stack<>();
         while(!arr.empty()){
             char a = arr.pop();
-            System.out.println(a);
             newStack.push(a);
         }
-        System.out.println(newStack);
-        arr = newStack;
         return newStack;
     }
 
@@ -101,7 +84,6 @@ public class Day5 {
     private static ArrayList<Stack<Character>> performMove(int number, int source, int destination, ArrayList<Stack<Character>> currentEnv){
         for (int i = 0; i < number; i++) {
             char ctm = currentEnv.get(source).pop();
-            System.out.println(ctm);
             currentEnv.get(destination).push(ctm);
         }
         return currentEnv;
