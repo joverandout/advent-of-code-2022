@@ -19,7 +19,7 @@ public class Day6 extends Day {
         return solutions;
     }
 
-    private boolean allFourCharsDiffer(char[] curr){
+    private boolean allFourCharsDiffer(char[] curr) {
         var valueList = new HashSet<Character>();
         for (var v : curr)
         {
@@ -29,7 +29,7 @@ public class Day6 extends Day {
         return true;
     }
 
-    private int getPosition(char[] inputAsArray, int lengthVal){
+    private int getPosition(char[] inputAsArray, int lengthVal) {
         char[] currentFourChars = new char[lengthVal];
         int pastRemove = 0;
         for (int i = 0; i < inputAsArray.length; i++) {
