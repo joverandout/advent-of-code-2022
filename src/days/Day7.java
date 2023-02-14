@@ -13,13 +13,10 @@ public class Day7 extends Day {
 
     @Override
     public Object[] getSolutions(String fileAsText) {
-        char[] inputAsArray = fileAsText.toCharArray();
-
         KeyValue<String, Integer> root = new KeyValue<>("/", 0);
         Node<KeyValue<String, Integer>> rootNode = new Node<KeyValue<String, Integer>>(root);
 
         Node currentNode = rootNode;
-
 
         try{
             Scanner scanner = new Scanner(fileAsText);
@@ -65,8 +62,6 @@ public class Day7 extends Day {
             }
 
             addAllNodes(rootNode);
-            CheckAllNodes(rootNode);
-
             return new Object[]{part1, 3};
 
         } catch (Exception e){
@@ -79,12 +74,6 @@ public class Day7 extends Day {
         for (Node<KeyValue<String, Integer>> child : node.getChildren() ) {
             addAllNodes(child);
             child.AddChildren();
-        }
-    }
-
-    private void CheckAllNodes(Node<KeyValue<String, Integer>> node){
-        for (Node<KeyValue<String, Integer>> child : node.getChildren() ) {
-            CheckAllNodes(child);
             if(checkIfIsDir(child) && child.getData().getValue() < 100000){
                 part1 += child.getData().getValue();
             }
