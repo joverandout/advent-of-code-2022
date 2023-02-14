@@ -22,40 +22,45 @@ public class Day7 extends Day {
 
         try{
             Scanner scanner = new Scanner(fileAsText);
+            boolean currentCommandIsListAll = false;
+            int lineno = 0;
+
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 Scanner lineScanner = new Scanner(line);
-                boolean currentCommandIsListAll = false;
                 String previousToken = "";
-                int lineno = 0;
+
+                lineno++;
+
                 while(lineScanner.hasNext()) {
                     String token = lineScanner.next();
-//                    System.out.println(token);
                     if(token.equals("$")) {}
                     else if(token.equals("cd")){
                         currentCommandIsListAll = false;
                     }
                     else if(token.equals("ls")){
-                        System.out.print("HEOHRJN");
                         currentCommandIsListAll = true;
                     }
                     else if(previousToken.equals("cd")){
                         if(token.equals("..")){
-//                            currentNode = currentNode.getParent();
+                            currentNode = currentNode.getParent();
                         }
                         else if(currentNode.getChild(token) != null){
-//                            currentNode = currentNode.getChild(token);
+                            currentNode = currentNode.getChild(token);
                         }
                     }
                     else if(currentCommandIsListAll){
-                        KeyValue<String, Integer> ChildTest = new KeyValue<>(lineScanner.next(), Integer.parseInt(token));
-                        System.out.println("key: " + token);
-                        System.out.println("val: " + lineScanner.next());
+                        String name = lineScanner.next();
+                        KeyValue<String, Integer> childNode;
+                        if(token.equals("dir")){
+                            childNode = new KeyValue<>(name, 0);
+                        }
+                        else{
+                            childNode = new KeyValue<>(name, Integer.parseInt(token));
+                        }
 
+                        currentNode.addChild(childNode);
                     }
-
-                    previousToken = token;
-
                 }
             }
 
