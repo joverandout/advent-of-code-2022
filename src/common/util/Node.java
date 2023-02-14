@@ -4,44 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Node<T> {
-    private List<Node<T>> children = new ArrayList<Node<T>>();
-    private Node<T> parent = null;
-    private T data = null;
+    private List<Node<KeyValue<String, Integer>>> children = new ArrayList<Node<KeyValue<String, Integer>>>();
+    private Node<KeyValue<String, Integer>> parent = null;
+    private KeyValue<String, Integer> data = null;
 
-    public Node(T data) {
+    public Node(KeyValue<String, Integer> data) {
         this.data = data;
     }
 
-    public Node(T data, Node<T> parent) {
+    public Node(KeyValue<String, Integer> data, Node<KeyValue<String, Integer>> parent) {
         this.data = data;
         this.parent = parent;
     }
 
-    public List<Node<T>> getChildren() {
+    public List<Node<KeyValue<String, Integer>>> getChildren() {
         return children;
     }
 
-    public void setParent(Node<T> parent) {
-        parent.addChild(this);
+    public void setParent(Node<KeyValue<String, Integer>> parent) {
         this.parent = parent;
     }
 
-    public void addChild(T data) {
-        Node<T> child = new Node<T>(data);
-        child.setParent(this);
+    public void addChild(KeyValue<String, Integer> data) {
+        Node<KeyValue<String, Integer>> child = new Node<KeyValue<String, Integer>>(data);
+        child.setParent((Node<KeyValue<String, Integer>>) this);
         this.children.add(child);
     }
 
-    public void addChild(Node<T> child) {
-        child.setParent(this);
+    public void addChild(Node<KeyValue<String, Integer>> child) {
+        child.setParent((Node<KeyValue<String, Integer>>) this);
         this.children.add(child);
     }
 
-    public T getData() {
+    public KeyValue<String, Integer> getData() {
         return this.data;
     }
 
-    public void setData(T data) {
+    public void setData(KeyValue<String, Integer> data) {
         this.data = data;
     }
 
@@ -55,5 +54,18 @@ public class Node<T> {
 
     public void removeParent() {
         this.parent = null;
+    }
+    
+    public Node<KeyValue<String, Integer>> getChild(String key){
+        for (Node<KeyValue<String, Integer>> child : children) {
+            if(child.getData().getKey().equals(key)){
+                return child;
+            }
+        }
+        return null;
+    }
+
+    public Node<KeyValue<String, Integer>> getParent(){
+        return this.parent;
     }
 }
