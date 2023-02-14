@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 public class Day7 extends Day {
 
+    public int part1 = 0;
+
     @Override
     public Object[] getSolutions(String fileAsText) {
         char[] inputAsArray = fileAsText.toCharArray();
@@ -42,21 +44,17 @@ public class Day7 extends Day {
                     else if(currentCommandIsCD){
                         System.out.println(token);
                         if(token.equals("..")){
-//                            System.out.println("Current node before - " + currentNode.getData().getKey());
                             currentNode = currentNode.getParent();
-//                            System.out.println("Current node after - " + currentNode.getData().getKey());
                         }
-                        else if(currentNode.getChild(token) != null){
-//                            System.out.println("Current node before - " + currentNode.getData().getKey());
-                            currentNode = currentNode.getChild(token);
-//                            System.out.println("Current node after - " + currentNode.getData().getKey());
+                        else if(currentNode.getChild("dir-"+token) != null){
+                            currentNode = currentNode.getChild("dir-"+token);
                         }
                     }
                     else if(currentCommandIsListAll){
                         String name = lineScanner.next();
                         KeyValue<String, Integer> childNode;
                         if(token.equals("dir")){
-                            childNode = new KeyValue<>(name, 0);
+                            childNode = new KeyValue<>("dir-"+name, 0);
                         }
                         else{
                             childNode = new KeyValue<>(name, Integer.parseInt(token));
@@ -69,7 +67,7 @@ public class Day7 extends Day {
             addAllNodes(rootNode);
             CheckAllNodes(rootNode);
 
-            return new Object[]{2, 3};
+            return new Object[]{part1, 3};
 
         } catch (Exception e){
             e.printStackTrace();
@@ -87,8 +85,18 @@ public class Day7 extends Day {
     private void CheckAllNodes(Node<KeyValue<String, Integer>> node){
         for (Node<KeyValue<String, Integer>> child : node.getChildren() ) {
             CheckAllNodes(child);
-            if(child.getData().getValue() > 100000) System.out.println(child.getData().getKey());
+            if(checkIfIsDir(child) && child.getData().getValue() < 100000){
+                part1 += child.getData().getValue();
+            }
         }
+    }
+
+    private boolean checkIfIsDir(Node<KeyValue<String, Integer>> node){
+        char[] name = node.getData().getKey().toCharArray();
+        if(name[0] == 'd' && name[1] == 'i' && name[2] == 'r' && name[3] == '-'){
+            return true;
+        }
+        return false;
     }
 
 
