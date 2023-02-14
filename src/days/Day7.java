@@ -23,14 +23,11 @@ public class Day7 extends Day {
         try{
             Scanner scanner = new Scanner(fileAsText);
             boolean currentCommandIsListAll = false;
-            int lineno = 0;
 
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 Scanner lineScanner = new Scanner(line);
                 String previousToken = "";
-
-                lineno++;
 
                 while(lineScanner.hasNext()) {
                     String token = lineScanner.next();
@@ -58,7 +55,6 @@ public class Day7 extends Day {
                         else{
                             childNode = new KeyValue<>(name, Integer.parseInt(token));
                         }
-
                         currentNode.addChild(childNode);
                     }
                 }
