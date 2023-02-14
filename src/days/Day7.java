@@ -21,7 +21,7 @@ public class Day7 extends Day {
 
         try{
             Scanner scanner = new Scanner(fileAsText);
-            boolean currentCommandIsListAll = false;
+            boolean currentCommandIsListAll = false, currentCommandIsCD = false;
 
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
@@ -33,16 +33,23 @@ public class Day7 extends Day {
                     if(token.equals("$")) {}
                     else if(token.equals("cd")){
                         currentCommandIsListAll = false;
+                        currentCommandIsCD = true;
                     }
                     else if(token.equals("ls")){
                         currentCommandIsListAll = true;
+                        currentCommandIsCD = false;
                     }
-                    else if(previousToken.equals("cd")){
+                    else if(currentCommandIsCD){
+                        System.out.println(token);
                         if(token.equals("..")){
+//                            System.out.println("Current node before - " + currentNode.getData().getKey());
                             currentNode = currentNode.getParent();
+//                            System.out.println("Current node after - " + currentNode.getData().getKey());
                         }
                         else if(currentNode.getChild(token) != null){
+//                            System.out.println("Current node before - " + currentNode.getData().getKey());
                             currentNode = currentNode.getChild(token);
+//                            System.out.println("Current node after - " + currentNode.getData().getKey());
                         }
                     }
                     else if(currentCommandIsListAll){
@@ -60,6 +67,7 @@ public class Day7 extends Day {
             }
 
             addAllNodes(rootNode);
+            CheckAllNodes(rootNode);
 
             return new Object[]{2, 3};
 
@@ -73,6 +81,13 @@ public class Day7 extends Day {
         for (Node<KeyValue<String, Integer>> child : node.getChildren() ) {
             addAllNodes(child);
             child.AddChildren();
+        }
+    }
+
+    private void CheckAllNodes(Node<KeyValue<String, Integer>> node){
+        for (Node<KeyValue<String, Integer>> child : node.getChildren() ) {
+            CheckAllNodes(child);
+            if(child.getData().getValue() > 100000) System.out.println(child.getData().getKey());
         }
     }
 

@@ -1,5 +1,6 @@
 package common.util;
 
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,10 @@ public class Node<T> {
     public void addChild(KeyValue<String, Integer> data) {
         Node<KeyValue<String, Integer>> child = new Node<KeyValue<String, Integer>>(data);
         child.setParent((Node<KeyValue<String, Integer>>) this);
+//        System.out.println("CHILDREN BEFORE: " + children.size());
         this.children.add(child);
+//        System.out.println("CHILDREN AFTER: " + children.size());
+
     }
 
     public void addChild(Node<KeyValue<String, Integer>> child) {
@@ -58,6 +62,7 @@ public class Node<T> {
     
     public Node<KeyValue<String, Integer>> getChild(String key){
         for (Node<KeyValue<String, Integer>> child : children) {
+//            System.out.println(key + " - " + child.data.getKey() +  " - " + child.getData().getKey().equals(key));
             if(child.getData().getKey().equals(key)){
                 return child;
             }
@@ -71,12 +76,19 @@ public class Node<T> {
 
     public void AddChildren(){
         int value = this.data.getValue();
+//        System.out.println();
+        System.out.println("NODE "+ this.data.getKey());
+        System.out.println("Before " + value);
         for (Node<KeyValue<String, Integer>> child : children) {
+//            System.out.println("child " + child.getData().getKey());
             value += child.getData().getValue();
         }
+        System.out.println("After " + value);
+        System.out.println();
 
         KeyValue<String, Integer> data = this.getData();
         data.setValue(value);
+
         this.setData(data);
     }
 }
