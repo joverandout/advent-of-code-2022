@@ -68,4 +68,15 @@ public class Node<T> {
     public Node<KeyValue<String, Integer>> getParent(){
         return this.parent;
     }
+
+    public void AddChildren(){
+        int value = this.data.getValue();
+        for (Node<KeyValue<String, Integer>> child : children) {
+            value += child.getData().getValue();
+        }
+
+        KeyValue<String, Integer> data = this.getData();
+        data.setValue(value);
+        this.setData(data);
+    }
 }

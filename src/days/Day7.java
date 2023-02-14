@@ -4,7 +4,6 @@ import common.Day;
 import common.util.KeyValue;
 import common.util.Node;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -15,7 +14,7 @@ public class Day7 extends Day {
         char[] inputAsArray = fileAsText.toCharArray();
 
         KeyValue<String, Integer> root = new KeyValue<>("/", 0);
-        Node<KeyValue> rootNode = new Node<KeyValue>(root);
+        Node<KeyValue<String, Integer>> rootNode = new Node<KeyValue<String, Integer>>(root);
 
         Node currentNode = rootNode;
 
@@ -60,6 +59,8 @@ public class Day7 extends Day {
                 }
             }
 
+            addAllNodes(rootNode);
+
             return new Object[]{2, 3};
 
         } catch (Exception e){
@@ -67,5 +68,13 @@ public class Day7 extends Day {
         }
         return new Object[]{22, 3};
     }
+
+    private void addAllNodes(Node<KeyValue<String, Integer>> node){
+        for (Node<KeyValue<String, Integer>> child : node.getChildren() ) {
+            addAllNodes(child);
+            child.AddChildren();
+        }
+    }
+
 
 }
