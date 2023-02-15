@@ -9,7 +9,9 @@ import java.util.Scanner;
 
 public class Day7 extends Day {
 
-    public int part1 = 0;
+    private int part1 = 0;
+    private int part2 = 70000000;
+    private int total = 0;
 
     @Override
     public Object[] getSolutions(String fileAsText) {
@@ -60,7 +62,14 @@ public class Day7 extends Day {
             }
 
             addAllNodes(rootNode);
-            return new Object[]{part1, 3};
+
+            for (Node<KeyValue<String, Integer>> child : rootNode.getChildren()) {
+                total += child.getData().getValue();
+            }
+
+            visitAllNodes(rootNode);
+
+            return new Object[]{part1, part2};
 
         } catch (Exception e){
             e.printStackTrace();
@@ -74,6 +83,17 @@ public class Day7 extends Day {
             child.AddChildren();
             if(checkIfIsDir(child) && child.getData().getValue() < 100000){
                 part1 += child.getData().getValue();
+            }
+        }
+    }
+
+    private void visitAllNodes(Node<KeyValue<String, Integer>> node){
+        for (Node<KeyValue<String, Integer>> child : node.getChildren() ) {
+            visitAllNodes(child);
+            if(checkIfIsDir(child) && ((70000000 - total) + child.getData().getValue()) > 30000000){
+                if(child.getData().getValue() < part2){
+                    part2 = child.getData().getValue();
+                }
             }
         }
     }
