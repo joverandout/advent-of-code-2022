@@ -25,7 +25,6 @@ public class Day7 extends Day {
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 Scanner lineScanner = new Scanner(line);
-                String previousToken = "";
 
                 while(lineScanner.hasNext()) {
                     String token = lineScanner.next();
@@ -39,7 +38,6 @@ public class Day7 extends Day {
                         currentCommandIsCD = false;
                     }
                     else if(currentCommandIsCD){
-                        System.out.println(token);
                         if(token.equals("..")){
                             currentNode = currentNode.getParent();
                         }
@@ -87,6 +85,4 @@ public class Day7 extends Day {
         }
         return false;
     }
-
-
 }
